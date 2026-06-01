@@ -1,116 +1,103 @@
 /* ==========================================================================
-   1. BASE RESET & ELEGANT SLATE DESIGN TOKENS
+   1. DESIGN SYSTEM VARIABLES & RESET
    ========================================================================== */
 :root {
-    --bg-color: #121824;       /* Soft, deep charcoal midnight slate */
-    --card-bg: #1e2533;        /* Slightly lighter slate for structural containers */
-    --card-hover: #262f42;     /* Medium polished slate for interactive focus */
-    --text-primary: #f8fafc;   /* Soft warm white for high-readability headers */
-    --text-secondary: #cbd5e1; /* Elegant light silver-gray for body prose */
-    --text-muted: #64748b;     /* Balanced muted gray for structural dates/subtext */
-    --border-color: #334155;   /* Crisp, subtle dividing gray */
-    --border-hover: #475569;   /* Defined accent boundary gray on focus */
+    --bg-color: #0f172a;          /* Deep slate background */
+    --text-primary: #f8fafc;      /* Crisp white/light gray headings */
+    --text-secondary: #94a3b8;    /* Soft gray body text */
+    --text-muted: #64748b;        /* Low-contrast nav/metadata text */
+    --accent-color: #5eead4;      /* Modern teal spotlight color */
+    --card-hover: rgba(30, 41, 59, 0.4); 
+    --border-color: rgba(51, 65, 85, 0.3);
+    --border-hover: rgba(148, 163, 184, 0.2);
 }
 
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html {
     scroll-behavior: smooth;
-    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-secondary);
 }
 
 body {
-    line-height: 1.7;
-    background: radial-gradient(circle at 15% 15%, #1e293b 0%, #121824 70%); /* Ambient gradient glow */
+    background-color: var(--bg-color);
+    color: var(--text-secondary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* ==========================================================================
-   2. MASTER GRID LAYOUT
+   2. CORE LAYOUT GRID
    ========================================================================== */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 40px;
-    display: grid;
-    grid-template-columns: 45% 55%;
+    display: flex;
     gap: 40px;
 }
 
 /* ==========================================================================
-   3. PROFILE PHOTO STYLING (CENTERED & ENLARGED)
-   ========================================================================== */
-.profile-photo-container {
-    display: block;
-    margin-left: 0 !important;   /* Force left alignment */
-    margin-right: auto !important;
-    margin-bottom: 2rem !important;
-    width: 9rem !important;      /* Dramatically scales up the photo container */
-    height: 9rem !important;     /* Keeps it a perfect square ratio */
-}
-
-.profile-photo {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    border-radius: 50% !important; 
-    border: 2px solid var(--border-color) !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
-    transition: border-color 0.3s ease;
-}
-
-.profile-photo:hover {
-    border-color: var(--text-primary) !important;
-}
-
-/* ==========================================================================
-   4. LEFT COLUMN (STICKY HEADER & SPACING REFINEMENTS)
+   3. LEFT COLUMN (MINIMAL STICKY HEADER)
    ========================================================================== */
 .left-column {
     position: sticky;
     top: 0;
+    width: 45%;
     height: 100vh;
-    padding: 60px 0; /* Slightly reduced top padding to shift contents up safely */
+    padding: 90px 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
-/* Reduces huge vertical gaps between text elements in the sidebar */
-.header-main-content .name {
-    margin-top: 1rem;
+.profile-photo-container {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--border-color);
+    margin-bottom: 24px;
+    background-color: var(--card-hover);
 }
 
-.header-main-content .nav-links {
-    margin-top: 50px; /* Reduced from 80px to shift menu up */
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-/* Rest of Section 4 remains exactly as you had it... */
 .name {
-    font-size: 3rem;
+    font-size: 2.75rem;
     font-weight: 700;
     color: var(--text-primary);
     letter-spacing: -0.04em;
+    line-height: 1.1;
 }
 
 .title {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     color: var(--text-primary);
-    margin-top: 10px;
+    margin-top: 12px;
     font-weight: 500;
     letter-spacing: -0.01em;
 }
 
 .tagline {
     margin-top: 16px;
-    max-width: 340px;
-    font-size: 0.95rem;
-    color: var(--text-secondary);
+    max-width: 320px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Sidebar Component Navigation Links */
+.header-main-content .nav-links {
+    margin-top: 60px;
 }
 
 .nav-links {
@@ -143,115 +130,99 @@ body {
 .nav-links a.active span {
     width: 40px;
     background-color: var(--text-primary);
-    padding-left: 20px;
 }
 
 .nav-links a:hover span {
-    color: var(--text-primary);
     transform: translateX(4px);
 }
 
-.socials-wrapper {
-    margin-top: auto;
-    padding-top: 1rem;
-}
-
-.socials-divider {
-    height: 1px;
-    background: linear-gradient(to right, var(--border-color) 0%, rgba(51, 65, 85, 0.1) 90%);
-    margin-bottom: 1.5rem;
-    width: 100%;
-}
-
-.socials {
-    display: flex;
-    gap: 12px;
-}
-
-.social-btn {
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    padding: 8px 16px;
-    border-radius: 6px;
-    background-color: rgba(30, 37, 51, 0.6);
-    border: 1px solid var(--border-color);
-    color: var(--text-secondary);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.2s ease;
-}
-
-.social-btn:hover {
-    color: var(--text-primary);
-    background-color: var(--card-hover);
-    border-color: var(--border-hover);
-    transform: translateY(-2px);
-}
-
 /* ==========================================================================
-   5. RIGHT COLUMN (SCROLLABLE REVIEWS)
+   4. RIGHT COLUMN (SCROLLABLE STRUCTURAL CONTENT)
    ========================================================================== */
 .right-column {
+    width: 55%;
     padding: 90px 0;
     display: flex;
     flex-direction: column;
-    gap: 100px;
+    gap: 80px; /* Clean breathing room between main content areas */
 }
 
-.content-section strong {
-    color: var(--text-primary);
-    font-weight: 600;
-}
-
-#about p {
-    margin-bottom: 24px;
-    font-size: 1.05rem;
+.content-section {
+    scroll-margin-top: 90px;
 }
 
 /* ==========================================================================
-   6. UNIFIED COMPONENT CARDS (EXPERIENCE & PROJECTS)
+   5. TEXT SOCIALS INTEGRATION (INSIDE ABOUT SECTION)
+   ========================================================================== */
+.about-socials {
+    margin-top: 24px;
+    display: flex;
+    gap: 24px;
+}
+
+.about-socials a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.about-socials a:hover {
+    color: var(--text-primary);
+}
+
+/* ==========================================================================
+   6. THE EXPERIENCE/CREDENTIAL GRID CARD COMPONENT
    ========================================================================== */
 .card {
     display: grid;
-    grid-template-columns: 28% 72%;
+    grid-template-columns: 1fr 3fr;
     gap: 16px;
     padding: 24px;
-    border-radius: 8px;
-    background-color: transparent;
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     margin-bottom: 12px;
+    border-radius: 8px;
     border: 1px solid transparent;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
 }
 
+/* Hover Accent Overlay States */
 .card:hover {
-    background-color: var(--card-bg);
-    border-color: var(--border-color);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px -10px rgba(2, 6, 23, 0.4);
+    background-color: var(--card-hover);
+    border-color: var(--border-hover);
+    box-shadow: 0 4px 20px rgba(2, 6, 23, 0.2);
 }
 
+/* Non-link variant modifiers (Certifications & Languages) */
+.card.unclickable {
+    cursor: default;
+}
+
+/* Card Typography */
 .card-date {
     font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    padding-top: 4px;
     color: var(--text-muted);
+    padding-top: 4px;
 }
 
 .card-content h3 {
+    font-size: 1rem;
+    font-weight: 600;
     color: var(--text-primary);
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin-bottom: 8px;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
+    line-height: 1.3;
     transition: color 0.2s ease;
+}
+
+.card:hover:not(.unclickable) h3 {
+    color: var(--accent-color);
 }
 
 .card-content h3 span {
@@ -259,189 +230,112 @@ body {
     transition: transform 0.2s ease;
 }
 
-.card:hover .card-content h3 span {
-    transform: translate(3px, -3px);
+.card:hover h3 span {
+    transform: translate(2px, -2px);
 }
 
 .card-content p {
-    font-size: 0.925rem;
+    font-size: 0.9rem;
+    margin-top: 10px;
     color: var(--text-secondary);
-    margin-bottom: 16px;
 }
 
-/* Experience Block Lists */
+/* Bulleted Role Formats */
 .role-bullets {
-    margin-bottom: 16px;
-    padding-left: 16px;
-    font-size: 0.925rem;
-    color: var(--text-secondary);
-}
-
-.role-bullets li {
-    margin-bottom: 6px;
-}
-
-.role-bullets li::marker {
-    color: var(--border-hover); 
-}
-
-/* Badge Layout Templates */
-.tags {
+    margin-top: 12px;
+    list-style-type: none;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 8px;
 }
 
-.tags span {
-    background-color: rgba(51, 65, 85, 0.4); 
-    color: var(--text-primary);               
-    border: 1px solid var(--border-color);
-    font-size: 0.725rem;
-    font-weight: 500;
-    padding: 4px 12px;
-    border-radius: 100px;
-    letter-spacing: 0.02em;
-    transition: border-color 0.2s ease;
-}
-
-.card:hover .tags span {
-    border-color: var(--border-hover); 
-}
-
-.site-footer {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    margin-top: 20px;
-}
-
-/* ==========================================================================
-   7. RESPONSIVE ADAPTIVE LAYER (MOBILE & TABLET)
-   ========================================================================== */
-@media (max-width: 900px) {
-    .container {
-        grid-template-columns: 1fr;
-        padding: 0 24px;
-    }
-    
-    .left-column {
-        position: relative;
-        height: auto;
-        padding: 60px 0 20px 0;
-    }
-    
-    .profile-photo-container {
-        width: 96px; /* Scaled cleanly for smaller viewports */
-        height: 96px;
-        margin-bottom: 16px;
-    }
-    
-    .nav-links {
-        display: none; 
-    }
-    
-    .right-column {
-        padding: 20px 0 60px 0;
-        gap: 60px;
-    }
-    
-    .card {
-        grid-template-columns: 1fr;
-        padding: 16px 0;
-    }
-    
-    .card:hover {
-        background-color: transparent;
-        transform: none;
-        box-shadow: none;
-        border-color: transparent;
-    }
-}
-/* ==========================================================================
-   8. MINIMAL DESIGN CREDENTIAL LISTS (RIGHT COLUMN)
-   ========================================================================== */
-.minimal-section-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 1.5rem;
-    padding-left: 24px;
-}
-
-.header-line {
-    width: 24px;
-    height: 1px;
-    background-color: var(--text-muted);
-    opacity: 0.4;
-}
-
-.header-text {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    color: var(--text-muted);
-    transition: color 0.3s ease;
-}
-
-/* Triggers a subtle visual highlight when a section comes into viewport focus */
-.content-section:hover .header-text {
-    color: var(--text-primary);
-}
-
-.credential-list-card {
-    background-color: transparent; /* Stripped container back to flush slate background */
-    padding: 12px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 40px;
-}
-
-.credential-item p {
-    font-size: 0.95rem;
+.role-bullets li {
+    font-size: 0.9rem;
     color: var(--text-secondary);
     position: relative;
     padding-left: 16px;
 }
 
-/* Minimal custom monospace list-dot replacing bulky icons */
-.credential-item p::before {
-    content: "·";
+.role-bullets li::before {
+    content: "◦";
     position: absolute;
     left: 0;
     color: var(--text-muted);
-    font-weight: bold;
 }
 
-.credential-item p strong {
-    color: var(--text-primary);
+/* Pill Badge Architecture */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.tags span {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.75rem;
     font-weight: 500;
+    color: var(--accent-color);
+    background-color: rgba(94, 234, 212, 0.1);
+    padding: 4px 10px;
+    border-radius: 9999px;
 }
 
-.horizontal-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+/* ==========================================================================
+   7. FOOTER DEFINITIONS
+   ========================================================================== */
+.site-footer {
+    margin-top: auto;
+    padding-top: 40px;
+    border-top: 1px solid var(--border-color);
 }
 
+.site-footer p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   8. RESPONSIVE OPTIMIZATION LAYOUTS
+   ========================================================================== */
 @media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        padding: 0 24px;
+        gap: 0;
+    }
+
     .left-column {
+        width: 100%;
         height: auto;
-        padding: 40px 0 20px 0;
+        padding: 60px 0 20px 0;
+        position: relative;
+        top: auto;
     }
-    .minimal-section-header {
-        padding-left: 0;
-        margin-top: 2rem;
+
+    .header-main-content .nav-links {
+        display: none; /* Safely hides sticky desktop navigation paths on mobile views */
     }
-    .credential-list-card {
-        padding: 0;
+
+    .right-column {
+        width: 100%;
+        padding: 40px 0;
+        gap: 60px;
     }
-    .horizontal-grid {
+
+    .card {
         grid-template-columns: 1fr;
-        gap: 12px;
+        gap: 8px;
+        padding: 16px 0;
     }
-}
-    .horizontal-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
+    
+    .card:hover {
+        background-color: transparent;
+        border-color: transparent;
+        box-shadow: none;
+    }
+    
+    .tags {
+        margin-top: 12px;
     }
 }
