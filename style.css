@@ -323,42 +323,74 @@ body {
     }
 }
 /* ==========================================================================
-   8. SIDEBAR CREDENTIALS (LANGUAGES & CERTIFICATES)
+   8. CONTAINER ACCENTS FOR CERTIFICATES & LANGUAGES (RIGHT COLUMN)
    ========================================================================== */
-.sidebar-credentials {
-    margin-top: 2.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.credential-group h3 {
-    color: var(--text-primary);
+.section-heading {
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.15em;
-    margin-bottom: 0.6rem;
-    opacity: 0.4; /* Styled soft title to preserve main nav hierarchy */
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    padding-left: 24px; /* Matches the grid padding alignment of your experience cards */
+    opacity: 0.6;
 }
 
-.credential-group p {
-    font-size: 0.85rem;
+.credential-list-card {
+    background-color: rgba(30, 37, 51, 0.3); /* Soft translucent framing background */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.credential-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.credential-icon {
+    font-size: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: rgba(51, 65, 85, 0.4);
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+.credential-item p {
+    font-size: 0.95rem;
     color: var(--text-secondary);
-    line-height: 1.6;
-    margin-bottom: 0.4rem;
 }
 
-.credential-group p strong {
+.credential-item p strong {
     color: var(--text-primary);
     font-weight: 600;
 }
 
-/* Responsiveness: converts layout to side-by-side elements on smaller tablet/mobile screens */
+/* Horizontal display specific to the languages block */
+.horizontal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Responsive optimization for mobile interfaces */
 @media (max-width: 900px) {
-    .sidebar-credentials {
+    .section-heading {
+        padding-left: 0;
         margin-top: 2rem;
-        margin-bottom: 2rem;
-        flex-direction: row;
-        gap: 4rem;
+    }
+    
+    .horizontal-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
 }
