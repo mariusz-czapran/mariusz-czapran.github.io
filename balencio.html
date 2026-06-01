@@ -3,125 +3,288 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balencio — Project Detail</title>
+    <title>Balencio — Project Case Study</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Specific overrides for single project pages */
-        .project-detail-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 80px 24px;
-        }
-        .back-link {
-            display: inline-block;
-            color: var(--text-secondary);
+        /* Project Page Specific Layout Overrides */
+        .project-back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
             text-decoration: none;
             font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
+            font-weight: 600;
+            letter-spacing: 0.05em;
             margin-bottom: 40px;
-            transition: color 0.2s;
+            transition: color 0.2s ease;
         }
-        .back-link:hover {
+        .project-back-link:hover {
             color: var(--text-primary);
         }
         .project-title {
             font-size: 2.5rem;
             color: var(--text-primary);
-            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 8px;
         }
-        .project-meta {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 30px;
+        .project-subtitle {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            font-weight: 500;
+            margin-bottom: 24px;
         }
-        .project-description p {
-            font-size: 1.05rem;
-            margin-bottom: 20px;
-            color: var(--text-secondary);
-        }
-        .btn-playstore {
-            display: inline-block;
-            background-color: var(--text-primary);
-            color: var(--bg-color);
-            text-decoration: none;
-            padding: 12px 24px;
-            font-weight: 600;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            margin: 20px 0 50px 0;
-            transition: opacity 0.2s;
-        }
-        .btn-playstore:hover {
-            opacity: 0.9;
-        }
-        .screenshot-grid {
+        .meta-details-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            padding: 20px 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 40px;
         }
-        .screenshot-card {
+        .meta-item h4 {
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        .meta-item p {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        .project-section {
+            margin-bottom: 48px;
+        }
+        .project-section h3 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+        .project-section p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+        .screenshot-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 24px;
+        }
+        .screenshot-frame {
             background-color: var(--card-hover);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            overflow: hidden;
+            border-radius: 12px;
             padding: 10px;
+            transition: border-color 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            aspect-ratio: 9 / 19;
         }
-        .screenshot-card img {
+        .screenshot-frame:hover {
+            border-color: var(--border-hover);
+        }
+        .screenshot-frame img {
             width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 4px;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 6px;
         }
-        .screenshot-caption {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            text-align: center;
-            margin-top: 10px;
+        .tech-spec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 16px;
+        }
+        .spec-card {
+            background: rgba(30, 41, 59, 0.2);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .spec-card h5 {
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .spec-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .spec-card ul li {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            padding-left: 14px;
+            position: relative;
+        }
+        .spec-card ul li::before {
+            content: "•";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+        }
+        @media (max-width: 900px) {
+            .meta-details-grid { grid-template-columns: 1fr; gap: 20px; }
+            .tech-spec-grid { grid-template-columns: 1fr; }
+            .screenshot-gallery { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <div class="project-detail-container">
-        <a href="index.html" class="back-link">← BACK TO PORTFOLIO</a>
-        
-        <h1 class="project-title">Balencio</h1>
-        <div class="project-meta">Simulation Entertainment &bull; Google Play Store Release</div>
-        
-        <div class="project-description">
-            <p>
-                Balencio is a lighthearted wealth simulation and banking experience application built to test interface design compliance and deployment ecosystems. The primary goal was to handle an end-to-end development life cycle, managing everything from initial mockups to closed testing tracks.
-            </p>
-            <p>
-                To comply with production standards, I coordinated a closed alpha testing program requiring structured deployment workflows and multi-language store localizations. The application features crisp, minimalist balance dashboards that mimic premium high-end banking environments.
-            </p>
-        </div>
+    <div class="container">
+        <!-- LEFT COLUMN: Fixed Header & Navigation -->
+        <header class="left-column">
+            <div class="header-main-content">
+                <div class="profile-photo-container">
+                    <img src="profile.jpg" alt="Mariusz Czapran" class="profile-photo">
+                </div>
+                <h1 class="name">Mariusz Czapran</h1>
+                <h2 class="title">Knowledge Manager & Android Developer</h2>
+                <p class="tagline">Transitioning years of IT industry experience into building mobile applications.</p>
+                
+                <nav class="nav-links">
+                    <a href="index.html#about"><span>—</span> ABOUT</a>
+                    <a href="index.html#experience"><span>—</span> EXPERIENCE</a>
+                    <a href="index.html#certificates"><span>—</span> CERTIFICATIONS</a>
+                    <a href="index.html#languages"><span>—</span> LANGUAGES</a>
+                    <a href="index.html#projects" class="active"><span>—</span> PROJECTS</a>
+                </nav>
 
-        <!-- Google Play Store Link Button -->
-        <a href="https://play.google.com/store/apps/details?id=com.balencio.app" target="_blank" class="btn-playstore">
-            View on Google Play Store
-        </a>
+                <div class="sidebar-socials">
+                    <a href="mailto:marius.czapran@gmail.com">Email</a>
+                    <a href="https://www.linkedin.com/in/mariusz-czapran-a88204319/" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </header>
 
-        <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+        <!-- RIGHT COLUMN: Case Study Presentation -->
+        <main class="right-column">
+            <div>
+                <a href="index.html#projects" class="project-back-link">← PROJECTS</a>
+                <h1 class="project-title">Balencio</h1>
+                <div class="project-subtitle">Native Wealth Simulation & Interface Engine</div>
+                
+                <div class="meta-details-grid">
+                    <div class="meta-item">
+                        <h4>Platform / Architecture</h4>
+                        <p>Android Mobile / MVVM</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>UI Framework</h4>
+                        <p>Jetpack Compose (Material 3)</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Target SDK</h4>
+                        <p>36 (Android 16 API Sandbox)</p>
+                    </div>
+                </div>
 
-        <h2 style="color: var(--text-primary); font-size: 1.5rem; margin-bottom: 20px;">App Screenshots</h2>
-        
-        <!-- Screenshot Grid (Replace image paths with your actual files) -->
-        <div class="screenshot-grid">
-            <div class="screenshot-card">
-                <img src="assets/balencio-mock1.png" alt="Balencio High-end Mockup Dashboard">
-                <div class="screenshot-caption">Simulate a high-end banking experience. Prank your friends!</div>
+                <!-- PURPOSE & OVERVIEW -->
+                <div class="project-section">
+                    <h3>Application Purpose & Scope</h3>
+                    <p>
+                        Balencio is a high-fidelity sandbox simulation application tailored to model modern retail banking, neo-brokerage, and cryptocurrency portfolio interfaces. Designed exclusively for entertainment, configuration testing, and user-experience research, it offers users a secure, localized dashboard to monitor simulated high-net-worth profiles, cash flow transaction sheets, and mock asset holdings without financial risk.
+                    </p>
+                    <p>
+                        The core objective of the project was to create a flawless financial UI that responds dynamically to user inputs. It translates complex dashboard states into interactive sub-menus for balance modification, decentralized ledger views, and mock stock trends while using strict internal data management to isolate simulations from actual banking APIs or payment networks.
+                    </p>
+                </div>
+
+                <!-- TECHNICAL ARCHITECTURE Breakdown from Source Code -->
+                <div class="project-section">
+                    <h3>Technical Stack & Implementation</h3>
+                    <p>
+                        The codebase is written in native Kotlin utilizing a Single-Activity structural model powered by an asynchronous MVVM (Model-View-ViewModel) state production chain. By leveraging declarative architectures, system constraints like hardware flags and permissions run concurrently without blocking UI updates.
+                    </p>
+
+                    <div class="tech-spec-grid">
+                        <div class="spec-card">
+                            <h5>Reactive State & Core Lifecycle</h5>
+                            <ul>
+                                <li><strong>Asynchronous State Flows:</strong> ViewStates are handled via decoupled Kotlin StateFlow pipes, collected safely inside Compose lifecycles using <code>collectAsState()</code>.</li>
+                                <li><strong>Hardware Window Intercepts:</strong> Implements asynchronous <code>SideEffect</code> parameters to dynamically lock or unlock system-level <code>FLAG_KEEP_SCREEN_ON</code> layout configurations based on current user preferences.</li>
+                                <li><strong>Edge-to-Edge Compilation:</strong> Implements native window insets to allow the UI shell to utilize full screen displays.</li>
+                            </ul>
+                        </div>
+                        <div class="spec-card">
+                            <h5>Navigation & Graph Topologies</h5>
+                            <ul>
+                                <li><strong>Compose Navigation Graph:</strong> A centralized navigation host handles seamless switching between functional layers (Splash, Onboarding Intro, Configuration, and the core app).</li>
+                                <li><strong>State-Aware Bottom Bar:</strong> The Material 3 NavigationBar tracks the backstack destination hierarchy in real time, intelligently hiding itself during onboarding screens and showing itself automatically on main views.</li>
+                                <li><strong>State Preservation:</strong> Navigation targets use single-top launching parameters and backstack state restoration to prevent memory leakage or view re-initialization.</li>
+                            </ul>
+                        </div>
+                        <div class="spec-card">
+                            <h5>Hardware & SDK Bridges</h5>
+                            <ul>
+                                <li><strong>Modern Permissions Handling:</strong> Uses <code>rememberLauncherForActivityResult</code> coupled with contracts to cleanly prompt users for <code>POST_NOTIFICATIONS</code> on Android 13+ devices.</li>
+                                <li><strong>Google Play Billing v6 Integration:</strong> Uses lifecycle-aware <code>LaunchedEffect</code> blocks to instantiate Google Play Billing wrappers safely for premium in-app purchase processing.</li>
+                                <li><strong>Mobile Ads SDK Integration:</strong> Ad components are decoupled from UI elements, initializing asynchronously on app launch to manage interstitial caches cleanly.</li>
+                            </ul>
+                        </div>
+                        <div class="spec-card">
+                            <h5>Data Interceptors</h5>
+                            <ul>
+                                <li><strong>Retrofit & GSON Pipelines:</strong> Engineered clean API adapters for network queries.</li>
+                                <li><strong>Coil Engine:</strong> Native background workers fetch and render asset logos without causing layout frame drops.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FUNCTIONAL FEATURE MODULES -->
+                <div class="project-section">
+                    <h3>Functional Core Components</h3>
+                    <ul class="role-bullets">
+                        <li><strong>Core Dashboard Simulator:</strong> A high-fidelity banking overview tracking primary account ledgers, quick actions, and customizable user data profiles.</li>
+                        <li><strong>Mock Transaction Engine:</strong> Dedicated internal transfer interfaces that accept user-defined parameters to immediately append mock balances.</li>
+                        <li><strong>Cryptocurrency & Equity Hub:</strong> Replicates decentralised holding portfolios to display custom quantities of tokens like Bitcoin and Ethereum.</li>
+                        <li><strong>Dynamic Theme Engine:</strong> A customizable Material 3 theme layer that dynamically swaps base parameters, light/dark modes, and primary color schemes on the fly.</li>
+                    </ul>
+                </div>
+
+                <!-- GRAPHICAL INTERFACE SCREENSHOTS -->
+                <div class="project-section">
+                    <h3>Product Interfaces</h3>
+                    <p>Meticulously structured minimalist interfaces optimized for readability and fluid user progression.</p>
+                    
+                    <div class="screenshot-gallery">
+                        <div class="screenshot-frame">
+                            <img src="balencio_screen1.jpg" alt="Balencio Dashboard Balance Simulator Interface">
+                        </div>
+                        <div class="screenshot-frame">
+                            <img src="balencio_screen2.jpg" alt="Balencio Crypto Portfolio Simulation Ledger">
+                        </div>
+                        <div class="screenshot-frame">
+                            <img src="balencio_screen3.jpg" alt="Balencio Theme Configuration Settings Area">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-section" style="margin-top: 40px; padding: 20px; background-color: rgba(148,163,184,0.05); border-radius: 8px; border-left: 3px solid var(--text-muted);">
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0; line-height: 1.5;">
+                        <strong>Architectural Disclaimer:</strong> Balencio is built strictly under sandboxed local system rules. It features no actual connection to any production financial clearing houses, credit institutions, or decentralized blockchains. All ledgers, incoming transactions, and asset growths are fully simulated locally.
+                    </p>
+                </div>
+
             </div>
-            <div class="screenshot-card">
-                <img src="assets/balencio-mock2.png" alt="Balencio Multi-currency view">
-                <div class="screenshot-caption">Custom balance tracking interface.</div>
-            </div>
-            <div class="screenshot-card">
-                <img src="assets/balencio-mock3.png" alt="Balencio Settings Panel">
-                <div class="screenshot-caption">Localization configurations menu.</div>
-            </div>
-        </div>
+
+            <!-- FOOTER -->
+            <footer class="site-footer">
+                <p>© 2026 Mariusz Czapran</p>
+            </footer>
+        </main>
     </div>
 </body>
 </html>
