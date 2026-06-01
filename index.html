@@ -6,49 +6,45 @@
     <title>Mariusz Czapran — Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
+</html>
 <body>
     <div class="container">
       <!-- LEFT COLUMN: Fixed Header & Navigation -->
-<header class="left-column">
-<div>
-        <!-- Profile Photo Container (Centered and Enlarged) -->
-<div class="profile-photo-container">
-    <img src="profile.jpg" alt="Mariusz Czapran" class="profile-photo">
-</div>
+        <header class="left-column">
+            <div>
+                <!-- Profile Photo Container -->
+                <div class="profile-photo-container">
+                    <img src="profile.jpg" alt="Mariusz Czapran" class="profile-photo">
+                </div>
 
-        <h1 class="name">Mariusz Czapran</h1>
-        <h2 class="title">Knowledge Manager & Android Developer</h2>
-        <p class="tagline">Transitioning years of IT industry experience into building mobile applications.</p>
-        
-        <nav class="nav-links">
-            <a href="#about" class="active"><span>—</span> ABOUT</a>
-            <a href="#experience"><span>—</span> EXPERIENCE</a>
-            <a href="#projects"><span>—</span> PROJECTS</a>
-        </nav>
-    </div>
+                <h1 class="name">Mariusz Czapran</h1>
+                <h2 class="title">Knowledge Manager & Android Developer</h2>
+                <p class="tagline">Transitioning years of IT industry experience into building mobile applications.</p>
+                
+                <!-- Expanded Navigation Links -->
+                <nav class="nav-links">
+                    <a href="#about" class="active"><span>—</span> ABOUT</a>
+                    <a href="#experience"><span>—</span> EXPERIENCE</a>
+                    <a href="#certificates"><span>—</span> CERTIFICATIONS</a>
+                    <a href="#languages"><span>—</span> LANGUAGES</a>
+                    <a href="#projects"><span>—</span> PROJECTS</a>
+                </nav>
+            </div>
 
-    <div class="sidebar-credentials">
-        <div class="credential-group">
-            <h3>CERTIFICATIONS</h3>
-            <p><strong>Microsoft 365 Certified:</strong> Fundamentals (MS-900)</p>
-            <p><strong>Microsoft Certified:</strong> Azure Data Fundamentals (DP-900)</p>
-            <p><strong>Microsoft Certified:</strong> Azure Fundamentals (AZ-900)</p>
-            <p><strong>Microsoft Certified:</strong> Security, Compliance, & Identity Fundamentals (SC-900)</p>
-        </div>
-
-        <div class="credential-group">
-            <h3>LANGUAGES</h3>
-            <p><strong>German:</strong> TELC B2 Certified</p>
-            <p><strong>Polish:</strong> Native</p>
-            <p><strong>English:</strong> Professional</p>
-        </div>
-    </div>
-    
-    <div class="socials">
-        <a href="mailto:marius.czapran@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/in/mariusz-czapran-a88204319/" target="_blank">LinkedIn</a>
-    </div>
-</header>
+            <!-- Separated Social Footer Links -->
+            <div class="socials-wrapper">
+                <div class="socials-divider"></div>
+                <div class="socials">
+                    <a href="mailto:marius.czapran@gmail.com" class="social-btn email-btn">
+                        <span>✉</span> Email
+                    </a>
+                    <a href="https://www.linkedin.com/in/mariusz-czapran-a88204319/" target="_blank" class="social-btn linkedin-btn">
+                        <span>💼</span> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </header>
 
         <!-- RIGHT COLUMN: Scrollable Content -->
         <main class="right-column">
@@ -62,7 +58,6 @@
 
             <!-- EXPERIENCE SECTION -->
             <section id="experience" class="content-section">
-                
                 <!-- Atos - KM -->
                 <div class="card">
                     <div class="card-date">Feb 2023 — Present</div>
@@ -138,46 +133,84 @@
                         </div>
                     </div>
                 </div>
+            </section>
 
+            <!-- NEW: CERTIFICATIONS SECTION -->
+            <section id="certificates" class="content-section">
+                <h2 class="section-heading">Certifications</h2>
+                <div class="credential-list-card">
+                    <div class="credential-item">
+                        <span class="credential-icon">🛡️</span>
+                        <p><strong>Microsoft 365 Certified:</strong> Fundamentals (MS-900)</p>
+                    </div>
+                    <div class="credential-item">
+                        <span class="credential-icon">📊</span>
+                        <p><strong>Microsoft Certified:</strong> Azure Data Fundamentals (DP-900)</p>
+                    </div>
+                    <div class="credential-item">
+                        <span class="credential-icon">☁️</span>
+                        <p><strong>Microsoft Certified:</strong> Azure Fundamentals (AZ-900)</p>
+                    </div>
+                    <div class="credential-item">
+                        <span class="credential-icon">🔐</span>
+                        <p><strong>Microsoft Certified:</strong> Security, Compliance, & Identity Fundamentals (SC-900)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- NEW: LANGUAGES SECTION -->
+            <section id="languages" class="content-section">
+                <h2 class="section-heading">Languages</h2>
+                <div class="credential-list-card horizontal-grid">
+                    <div class="credential-item">
+                        <span class="credential-icon">🇩🇪</span>
+                        <p><strong>German:</strong> TELC B2 Certified</p>
+                    </div>
+                    <div class="credential-item">
+                        <span class="credential-icon">🇵🇱</span>
+                        <p><strong>Polish:</strong> Native Speaker</p>
+                    </div>
+                    <div class="credential-item">
+                        <span class="credential-icon">🇬🇧</span>
+                        <p><strong>English:</strong> Professional Working Proficiency</p>
+                    </div>
+                </div>
             </section>
 
             <!-- PROJECTS SECTION -->
             <section id="projects" class="content-section">
-            
+                <!-- Peerly -->
+                <div class="card" onclick="window.location.href='peerly.html'">
+                    <div class="card-date">Messaging App</div>
+                    <div class="card-content">
+                        <h3>Peerly (In Development) <span>↗</span></h3>
+                        <p>A lightweight, privacy-focused peer-to-peer messaging tool leveraging secure mesh communication networks. <br>Click to view project details and screenshots.</p>
+                        <div class="tags">
+                            <span>P2P Mesh Networking</span>
+                            <span>Local Communications</span>
+                            <span>Ad-Free Architecture</span>
+                        </div>
+                    </div>
+                </div>
 
-<!-- Peerly -->
-<div class="card" onclick="window.location.href='peerly.html'">
-    <div class="card-date">Messaging App</div>
-    <div class="card-content">
-        <h3>Peerly (In Development) <span>↗</span></h3>
-        <p>A lightweight, privacy-focused peer-to-peer messaging tool leveraging secure mesh communication networks. <br>Click to view project details and screenshots.</p>
-        <div class="tags">
-            <span>P2P Mesh Networking</span>
-            <span>Local Communications</span>
-            <span>Ad-Free Architecture</span>
-        </div>
-    </div>
-</div>
-
-<!-- Balencio -->
-<div class="card" onclick="window.location.href='balencio.html'">
-    <div class="card-date">Simulation Entertainment</div>
-    <div class="card-content">
-        <h3>Balencio <span>↗</span></h3>
-        <p>A financial simulation and wealth simulator prank app deployed on Google Play. <br>Click to view store links, details, and app screenshots.</p>
-        <div class="tags">
-            <span>Google Play Console</span>
-            <span>UI/UX Simulation</span>
-            <span>Banking Simulator</span>
-        </div>
-    </div>
-</div>
-
+                <!-- Balencio -->
+                <div class="card" onclick="window.location.href='balencio.html'">
+                    <div class="card-date">Simulation Entertainment</div>
+                    <div class="card-content">
+                        <h3>Balencio <span>↗</span></h3>
+                        <p>A financial simulation and wealth simulator prank app deployed on Google Play. <br>Click to view store links, details, and app screenshots.</p>
+                        <div class="tags">
+                            <span>Google Play Console</span>
+                            <span>UI/UX Simulation</span>
+                            <span>Banking Simulator</span>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <!-- FOOTER -->
             <footer class="site-footer">
-                <p>2026 Mariusz Czapran</p>
+                <p>© 2026 Mariusz Czapran</p>
             </footer>
         </main>
     </div>
@@ -191,7 +224,7 @@
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 150) {
+                if (pageYOffset >= sectionTop - 180) {
                     current = section.getAttribute('id');
                 }
             });
@@ -205,4 +238,3 @@
         });
     </script>
 </body>
-</html>
