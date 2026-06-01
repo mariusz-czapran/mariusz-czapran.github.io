@@ -47,10 +47,10 @@ body {
    ========================================================================== */
 .profile-photo-container {
     display: block;
-    margin-left: auto;
+    margin-left: 0;       /* Force aligns it to the left edge */
     margin-right: auto;
     margin-bottom: 24px;
-    width: 112px;   /* Exactly twice the size of the previous 56px variant */
+    width: 112px;         /* Maintains your preferred size */
     height: 112px;
 }
 
