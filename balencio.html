@@ -38,7 +38,7 @@
         }
         .meta-details-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 16px;
             padding: 20px 0;
             border-top: 1px solid var(--border-color);
@@ -134,8 +134,26 @@
             position: absolute;
             left: 0;
         }
+        .play-store-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--bg-color);
+            background-color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 6px;
+            margin-top: 16px;
+            transition: all 0.2s ease;
+        }
+        .play-store-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
         @media (max-width: 900px) {
-            .meta-details-grid { grid-template-columns: 1fr; gap: 20px; }
+            .meta-details-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
             .tech-spec-grid { grid-template-columns: 1fr; }
             .screenshot-gallery { grid-template-columns: 1fr; }
         }
@@ -143,7 +161,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- LEFT COLUMN: Fixed Header & Navigation -->
         <header class="left-column">
             <div class="header-main-content">
                 <div class="profile-photo-container">
@@ -168,7 +185,6 @@
             </div>
         </header>
 
-        <!-- RIGHT COLUMN: Case Study Presentation -->
         <main class="right-column">
             <div>
                 <a href="index.html#projects" class="project-back-link">← PROJECTS</a>
@@ -177,84 +193,87 @@
                 
                 <div class="meta-details-grid">
                     <div class="meta-item">
-                        <h4>Platform / Architecture</h4>
-                        <p>Android Mobile / MVVM</p>
+                        <h4>Role</h4>
+                        <p>Solo Creator (End-to-End)</p>
                     </div>
                     <div class="meta-item">
-                        <h4>UI Framework</h4>
-                        <p>Jetpack Compose (Material 3)</p>
+                        <h4>Availability</h4>
+                        <p>Google Play Store</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Localization</h4>
+                        <p>Multi-language Support</p>
                     </div>
                     <div class="meta-item">
                         <h4>Target SDK</h4>
-                        <p>36 (Android 16 API Sandbox)</p>
+                        <p>36 (Android 16 Sandbox)</p>
                     </div>
                 </div>
 
-                <!-- PURPOSE & OVERVIEW -->
                 <div class="project-section">
-                    <h3>Application Purpose & Scope</h3>
+                    <h3>Project Overview & Ownership</h3>
                     <p>
-                        Balencio is a high-fidelity sandbox simulation application tailored to model modern retail banking, neo-brokerage, and cryptocurrency portfolio interfaces. Designed exclusively for entertainment, configuration testing, and user-experience research, it offers users a secure, localized dashboard to monitor simulated high-net-worth profiles, cash flow transaction sheets, and mock asset holdings without financial risk.
+                        Balencio is a high-fidelity simulation application built to mirror contemporary retail banking, neo-brokerage, and crypto-currency asset dashboards. As an entirely self-directed project, I managed the **complete product lifecycle independently**: driving initial product discovery, designing the interface concepts, architecting the native engineering pipeline, coordinating closed beta-testing compliance tracks, and ultimately navigating full production release cycles.
                     </p>
                     <p>
-                        The core objective of the project was to create a flawless financial UI that responds dynamically to user inputs. It translates complex dashboard states into interactive sub-menus for balance modification, decentralized ledger views, and mock stock trends while using strict internal data management to isolate simulations from actual banking APIs or payment networks.
+                        The app is successfully published in production on the **Google Play Store**, serving users worldwide. To accommodate a global user base, the application is fully localized with native multi-language support, adjusting interface strings, regional formatting metrics, and layout elements seamlessly based on device language parameters.
                     </p>
+                    <a href="https://play.google.com/store" target="_blank" class="play-store-btn">
+                        Get it on Google Play <span>↗</span>
+                    </a>
                 </div>
 
-                <!-- TECHNICAL ARCHITECTURE Breakdown from Source Code -->
                 <div class="project-section">
                     <h3>Technical Stack & Implementation</h3>
                     <p>
-                        The codebase is written in native Kotlin utilizing a Single-Activity structural model powered by an asynchronous MVVM (Model-View-ViewModel) state production chain. By leveraging declarative architectures, system constraints like hardware flags and permissions run concurrently without blocking UI updates.
+                        The technical implementation leverages a robust, Single-Activity structural paradigm written in native Kotlin. It enforces a strict asynchronous Model-View-ViewModel (MVVM) state management pipeline to insulate performance-heavy UI components from background operational workflows.
                     </p>
 
                     <div class="tech-spec-grid">
                         <div class="spec-card">
                             <h5>Reactive State & Core Lifecycle</h5>
                             <ul>
-                                <li><strong>Asynchronous State Flows:</strong> ViewStates are handled via decoupled Kotlin StateFlow pipes, collected safely inside Compose lifecycles using <code>collectAsState()</code>.</li>
-                                <li><strong>Hardware Window Intercepts:</strong> Implements asynchronous <code>SideEffect</code> parameters to dynamically lock or unlock system-level <code>FLAG_KEEP_SCREEN_ON</code> layout configurations based on current user preferences.</li>
-                                <li><strong>Edge-to-Edge Compilation:</strong> Implements native window insets to allow the UI shell to utilize full screen displays.</li>
+                                <li><strong>Asynchronous State Flows:</strong> Application state properties are piped via Kotlin StateFlow networks, handled cleanly via Jetpack Compose's <code>collectAsState()</code> mechanism.</li>
+                                <li><strong>Hardware Window Intercepts:</strong> Coordinates asynchronous <code>SideEffect</code> parameters to dynamically apply or release system-level <code>FLAG_KEEP_SCREEN_ON</code> layout configurations based on current user preferences.</li>
+                                <li><strong>Edge-to-Edge Execution:</strong> Integrates native system window insets, allowing layout elements to scale seamlessly behind the navigation bars.</li>
                             </ul>
                         </div>
                         <div class="spec-card">
                             <h5>Navigation & Graph Topologies</h5>
                             <ul>
-                                <li><strong>Compose Navigation Graph:</strong> A centralized navigation host handles seamless switching between functional layers (Splash, Onboarding Intro, Configuration, and the core app).</li>
-                                <li><strong>State-Aware Bottom Bar:</strong> The Material 3 NavigationBar tracks the backstack destination hierarchy in real time, intelligently hiding itself during onboarding screens and showing itself automatically on main views.</li>
-                                <li><strong>State Preservation:</strong> Navigation targets use single-top launching parameters and backstack state restoration to prevent memory leakage or view re-initialization.</li>
+                                <li><strong>Compose Navigation Graph:</strong> A centralized controller handles complex transitions between functional modules (Splash screen, Onboarding flows, User Configuration, and the main application suite).</li>
+                                <li><strong>State-Aware Bottom Bar:</strong> The Material 3 NavigationBar tracks active destination hierarchies on the fly, safely hiding itself during setup tracks to maximize screen area.</li>
+                                <li><strong>State Preservation:</strong> Destinations leverage single-top launch paradigms to guarantee swift navigation caching and zero memory regressions.</li>
                             </ul>
                         </div>
                         <div class="spec-card">
                             <h5>Hardware & SDK Bridges</h5>
                             <ul>
-                                <li><strong>Modern Permissions Handling:</strong> Uses <code>rememberLauncherForActivityResult</code> coupled with contracts to cleanly prompt users for <code>POST_NOTIFICATIONS</code> on Android 13+ devices.</li>
-                                <li><strong>Google Play Billing v6 Integration:</strong> Uses lifecycle-aware <code>LaunchedEffect</code> blocks to instantiate Google Play Billing wrappers safely for premium in-app purchase processing.</li>
-                                <li><strong>Mobile Ads SDK Integration:</strong> Ad components are decoupled from UI elements, initializing asynchronously on app launch to manage interstitial caches cleanly.</li>
+                                <li><strong>Modern Permissions Handling:</strong> Uses <code>rememberLauncherForActivityResult</code> api contracts to prompt users gracefully for <code>POST_NOTIFICATIONS</code> on Android 13+ devices.</li>
+                                <li><strong>Google Play Billing v6 Integration:</strong> Uses lifecycle-aware <code>LaunchedEffect</code> blocks to instantiate Google Play Billing wrappers safely for premium feature unlocks.</li>
+                                <li><strong>Mobile Ads SDK Integration:</strong> Ad layers are entirely decoupled from screen composables, loading asynchronously via lifecycle caches to optimize frame rates.</li>
                             </ul>
                         </div>
                         <div class="spec-card">
-                            <h5>Data Interceptors</h5>
+                            <h5>Localization & Assets</h5>
                             <ul>
-                                <li><strong>Retrofit & GSON Pipelines:</strong> Engineered clean API adapters for network queries.</li>
-                                <li><strong>Coil Engine:</strong> Native background workers fetch and render asset logos without causing layout frame drops.</li>
+                                <li><strong>Multi-Language Framework:</strong> Engineered modular resource translation bundles allowing seamless local presentation for widespread user markets.</li>
+                                <li><strong>Retrofit & GSON:</strong> Scalable networking layer for retrieving decentralized mock asset tickers.</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <!-- FUNCTIONAL FEATURE MODULES -->
                 <div class="project-section">
                     <h3>Functional Core Components</h3>
                     <ul class="role-bullets">
-                        <li><strong>Core Dashboard Simulator:</strong> A high-fidelity banking overview tracking primary account ledgers, quick actions, and customizable user data profiles.</li>
-                        <li><strong>Mock Transaction Engine:</strong> Dedicated internal transfer interfaces that accept user-defined parameters to immediately append mock balances.</li>
-                        <li><strong>Cryptocurrency & Equity Hub:</strong> Replicates decentralised holding portfolios to display custom quantities of tokens like Bitcoin and Ethereum.</li>
-                        <li><strong>Dynamic Theme Engine:</strong> A customizable Material 3 theme layer that dynamically swaps base parameters, light/dark modes, and primary color schemes on the fly.</li>
+                        <li><strong>Core Dashboard Simulator:</strong> A high-fidelity overview managing primary mock asset categories, balances, and quick transaction logs.</li>
+                        <li><strong>Mock Transaction Engine:</strong> Dedicated internal transfer screens allowing instant generation of simulated fund movements.</li>
+                        <li><strong>Cryptocurrency & Equity Hub:</strong> Replicates decentralised holdings tracker views, managing localized quantities of major tokens like Bitcoin and Ethereum.</li>
+                        <li><strong>Dynamic Styling Controls:</strong> A fully customized Material 3 design system layer enabling real-time adjustments of base styles, color configurations, and dark/light modes.</li>
                     </ul>
                 </div>
 
-                <!-- GRAPHICAL INTERFACE SCREENSHOTS -->
                 <div class="project-section">
                     <h3>Product Interfaces</h3>
                     <p>Meticulously structured minimalist interfaces optimized for readability and fluid user progression.</p>
@@ -280,7 +299,6 @@
 
             </div>
 
-            <!-- FOOTER -->
             <footer class="site-footer">
                 <p>© 2026 Mariusz Czapran</p>
             </footer>
