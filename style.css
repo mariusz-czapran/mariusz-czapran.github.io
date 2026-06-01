@@ -322,3 +322,43 @@ body {
         border-color: transparent;
     }
 }
+/* ==========================================================================
+   8. SIDEBAR CREDENTIALS (LANGUAGES & CERTIFICATES)
+   ========================================================================== */
+.sidebar-credentials {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.credential-group h3 {
+    color: var(--text-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.6rem;
+    opacity: 0.4; /* Styled soft title to preserve main nav hierarchy */
+}
+
+.credential-group p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0.4rem;
+}
+
+.credential-group p strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Responsiveness: converts layout to side-by-side elements on smaller tablet/mobile screens */
+@media (max-width: 900px) {
+    .sidebar-credentials {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        flex-direction: row;
+        gap: 4rem;
+    }
+}
