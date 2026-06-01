@@ -1,13 +1,15 @@
 /* ==========================================================================
-   1. BASE RESET & MONOCHROME DESIGN TOKENS
+   1. BASE RESET & ELEGANT SLATE DESIGN TOKENS
    ========================================================================== */
 :root {
-    --bg-color: #000000;       /* Stark pure black */
-    --text-primary: #ffffff;   /* High-contrast crisp white */
-    --text-secondary: #94a3b8; /* Mid-tone slate gray for readability */
-    --text-muted: #64748b;     /* Deeper gray for dates and structural text */
-    --border-color: #334155;   /* Subtle boundary gray */
-    --card-hover: #1e293b;     /* Dark charcoal gray for smooth interactive focus */
+    --bg-color: #121824;       /* Soft, deep charcoal midnight slate */
+    --card-bg: #1e2533;        /* Slightly lighter slate for structural containers */
+    --card-hover: #262f42;     /* Medium polished slate for interactive focus */
+    --text-primary: #f8fafc;   /* Soft warm white for high-readability headers */
+    --text-secondary: #cbd5e1; /* Elegant light silver-gray for body prose */
+    --text-muted: #64748b;     /* Balanced muted gray for structural dates/subtext */
+    --border-color: #334155;   /* Crisp, subtle dividing gray */
+    --border-hover: #475569;   /* Defined accent boundary gray on focus */
 }
 
 * {
@@ -25,6 +27,7 @@ html {
 
 body {
     line-height: 1.7;
+    background: radial-gradient(circle at 15% 15%, #1e293b 0%, #121824 70%); /* Adds a premium subtle ambient glow */
 }
 
 /* ==========================================================================
@@ -157,16 +160,18 @@ body {
     gap: 16px;
     padding: 24px;
     border-radius: 8px;
+    background-color: transparent;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     margin-bottom: 12px;
     border: 1px solid transparent;
+    cursor: pointer;
 }
 
 .card:hover {
-    background-color: var(--card-hover);
+    background-color: var(--card-bg);
     border-color: var(--border-color);
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 10px 25px -10px rgba(2, 6, 23, 0.4);
 }
 
 .card-date {
@@ -217,7 +222,7 @@ body {
 }
 
 .role-bullets li::marker {
-    color: var(--text-muted); /* Clean gray tone for structural list markers */
+    color: var(--border-hover); /* Refined, non-distracting dot marker color */
 }
 
 /* Rounded Inline Technology Badges */
@@ -228,14 +233,19 @@ body {
 }
 
 .tags span {
-    background-color: #1e293b; /* Solid charcoal tag background */
-    color: var(--text-primary); /* High contrast white text for micro-skills */
+    background-color: rgba(51, 65, 85, 0.4); /* Glassmorphism translucent tag fill */
+    color: var(--text-primary);               /* Clear text for clarity */
     border: 1px solid var(--border-color);
     font-size: 0.725rem;
     font-weight: 500;
     padding: 4px 12px;
     border-radius: 100px;
     letter-spacing: 0.02em;
+    transition: border-color 0.2s ease;
+}
+
+.card:hover .tags span {
+    border-color: var(--border-hover); /* Accents micro-tags when container is active */
 }
 
 .site-footer {
