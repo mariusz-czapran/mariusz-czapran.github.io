@@ -43,12 +43,15 @@ body {
 }
 
 /* ==========================================================================
-   3. PROFILE PHOTO STYLING (COMPACT VARIANT)
+   3. PROFILE PHOTO STYLING (CENTERED & ENLARGED)
    ========================================================================== */
 .profile-photo-container {
-    margin-bottom: 16px;
-    width: 56px;   /* Tiny, professional accent framework */
-    height: 56px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 24px;
+    width: 112px;   /* Exactly twice the size of the previous 56px variant */
+    height: 112px;
 }
 
 .profile-photo {
@@ -56,8 +59,8 @@ body {
     height: 100%;
     object-fit: cover;
     border-radius: 50%; 
-    border: 1.5px solid var(--border-color);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    border: 2px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: border-color 0.3s ease;
 }
 
@@ -293,9 +296,9 @@ body {
     }
     
     .profile-photo-container {
-        width: 48px;
-        height: 48px;
-        margin-bottom: 12px;
+        width: 96px; /* Scaled cleanly for smaller viewports */
+        height: 96px;
+        margin-bottom: 16px;
     }
     
     .nav-links {
