@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peerly — Project Case Study</title>
+    <title>Peerly</title>
     <link rel="stylesheet" href="style.css">
     <style>
         /* Project Page Specific Layout Overrides */
@@ -149,6 +149,24 @@
             letter-spacing: 0.05em;
             text-transform: uppercase;
         }
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--bg-color);
+            background-color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 6px;
+            margin-top: 20px;
+            transition: all 0.2s ease;
+        }
+        .download-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
         @media (max-width: 900px) {
             .meta-details-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
             .tech-spec-grid { grid-template-columns: 1fr; }
@@ -194,8 +212,8 @@
                         <p>Solo Creator (End-to-End)</p>
                     </div>
                     <div class="meta-item">
-                        <h4>Status</h4>
-                        <p>Closed Beta Testing</p>
+                        <h4>Availability</h4>
+                        <p>Google Drive (APK)</p>
                     </div>
                     <div class="meta-item">
                         <h4>Topology</h4>
@@ -215,8 +233,14 @@
                     <p>
                         As the end-to-end architect of Peerly, I directed the complete conceptual lifecycle: formulating the asynchronous node discovery structures, designing the minimalist theme architecture, and executing the native low-level radio bindings. The application is fully production-ready and is currently undergoing the rigorous **Google Play Store Closed Beta Testing Phase** required for global developer provisioning.
                     </p>
-                    <div class="testing-badge">
-                        Status: Closed Beta Deployment Track
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center;">
+                        <a href="https://drive.google.com/file/d/1rVG6cymE3UipwEPSwCwXDBH7InD_Xi4j/view?usp=sharing" target="_blank" class="download-btn">
+                            Download Beta APK <span>↗</span>
+                        </a>
+                        <div class="testing-badge" style="margin-top: 20px;">
+                            Status: Closed Beta Deployment Track
+                        </div>
                     </div>
                 </div>
 
