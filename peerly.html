@@ -145,7 +145,6 @@
             font-weight: 600;
             padding: 8px 16px;
             border-radius: 4px;
-            margin-top: 16px;
             letter-spacing: 0.05em;
             text-transform: uppercase;
         }
@@ -160,11 +159,28 @@
             font-weight: 600;
             padding: 12px 24px;
             border-radius: 6px;
-            margin-top: 20px;
             transition: all 0.2s ease;
         }
         .download-btn:hover {
             opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        .secondary-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            background-color: transparent;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        .secondary-btn:hover {
+            border-color: var(--text-primary);
             transform: translateY(-2px);
         }
         @media (max-width: 900px) {
@@ -213,7 +229,7 @@
                     </div>
                     <div class="meta-item">
                         <h4>Availability</h4>
-                        <p>Google Drive (APK)</p>
+                        <p>Google Play Store</p>
                     </div>
                     <div class="meta-item">
                         <h4>Topology</h4>
@@ -228,18 +244,21 @@
                 <div class="project-section">
                     <h3>Project Overview & Lifecycle Management</h3>
                     <p>
-                        Peerly is a native Android communication utility engineered specifically for serverless, off-the-grid infrastructure communication. Operating entirely without reliance on centralized data servers, cloud databases, or active cellular internet access, the platform transforms consumer devices into functional standalone grid nodes. It enables resilient, encrypted local text messaging at festivals, remote research environments, or during catastrophic communication infrastructure collapses.
+                        Peerly is a privacy-first, serverless Android messaging app engineered for completely off-the-grid communication. Operating without reliance on centralized servers, cloud databases, cellular networks, or internet connectivity, the application transforms consumer mobile devices into local, resilient grid nodes. It offers a 100% free and ad-free experience for seamless communication at festivals, remote travel environments, or during emergency network outages.
                     </p>
                     <p>
-                        As the end-to-end architect of Peerly, I directed the complete conceptual lifecycle: formulating the asynchronous node discovery structures, designing the minimalist theme architecture, and executing the native low-level radio bindings. The application is fully production-ready and is currently undergoing the rigorous **Google Play Store Closed Beta Testing Phase** required for global developer provisioning.
+                        As the end-to-end architect, I executed the full product lifecycle: designing asynchronous node discovery, engineering local state persistence, establishing identity validation via QR code handshakes, and building a responsive Jetpack Compose interface. Peerly is live and available on the Google Play Store.
                     </p>
                     
-                    <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center;">
-                        <a href="https://drive.google.com/file/d/1rVG6cymE3UipwEPSwCwXDBH7InD_Xi4j/view?usp=sharing" target="_blank" class="download-btn">
-                            Download Beta APK <span>↗</span>
+                    <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin-top: 20px;">
+                        <a href="https://play.google.com/store/apps/details?id=com.peerly.app" target="_blank" class="download-btn">
+                            Google Play Store <span>↗</span>
                         </a>
-                        <div class="testing-badge" style="margin-top: 20px;">
-                            Status: Closed Beta Deployment Track
+                        <a href="https://mariusz-czapran.github.io/peerly/#top" target="_blank" class="secondary-btn">
+                            Visit Peerly Website <span>↗</span>
+                        </a>
+                        <div class="testing-badge">
+                            Status: Live in Production
                         </div>
                     </div>
                 </div>
